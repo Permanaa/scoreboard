@@ -1,0 +1,22 @@
+{
+  "short_name": "Scoreboard",
+  "name": "Scoreboard",
+  "description": "Scoreboard",
+  "start_url": "/",
+  "background_color": "#FFF",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#FFF",
+  "icons": [
+    {
+      "src": "/icons/icon-144x144.png",
+      "type": "image/png",
+      "sizes": "144x144"
+    },
+    {
+      "src": "/icons/icon-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ]
+}

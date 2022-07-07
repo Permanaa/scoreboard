@@ -1,0 +1,18 @@
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  gap: 8px;
+  border: 1px solid #00000050;
+  border-radius: 10px;
+  padding: 12px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.buttonWrapper {
+  display: flex;
+  gap: 12px
+}
