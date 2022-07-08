@@ -9,6 +9,7 @@ function MyApp({ Component, pageProps }) {
         <title>Scoreboard</title>
         <meta name="description" content="Scoreboard" />
         <link rel='manifest' href='/manifest.json' />
+        <meta name="viewport" content="viewport-fit=cover" />
       </Head>
       <Component {...pageProps} />
     </ChakraProvider>
