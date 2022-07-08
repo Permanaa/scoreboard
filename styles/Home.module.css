@@ -1,5 +1,6 @@
 .root {
   user-select: none;
+  font-family: "Do Hyeon", sans-serif;
 }
 
 .header {
@@ -100,7 +101,7 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  font-size: 400px;
+  font-size: 450px;
   color: white;
 }
 
