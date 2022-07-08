@@ -31,18 +31,18 @@ export default function Home() {
           <SettingsIcon fontSize={25} color="white" />
         </Box>
         <Box className={styles.title}>
-          <Heading as="h1">Selo Seto Cup II</Heading>
+          <Heading as="h1">SET</Heading>
         </Box>
         <Box className={styles.utils} cursor="pointer" onClick={onOpenControl}>
           <HamburgerIcon fontSize={25} color="white" />
         </Box>
         <Box className={styles.round}>
-          <Box fontSize={20}>Babak</Box>
-          <Box fontSize={50} lineHeight="50px">{round}</Box>
+          {/* <Box fontSize={80}>SET</Box> */}
+          <Box fontSize={80}>{round}</Box>
         </Box>
       </Box>
       <Box className={styles.main}>
-        <Box className={styles.column}>
+        <Box className={styles.column} backgroundColor={home.color}>
           <Box className={`${styles.teamWrapper} ${styles.teamLeft}`}>
             <Box className={styles.teamName}>
               {home.name}
@@ -50,7 +50,6 @@ export default function Home() {
             <Box
               className={styles.teamSet}
               onClick={() => handleAddPoint("home")}
-              backgroundColor={home.color}
             >
               {home.point}
             </Box>
@@ -66,18 +65,11 @@ export default function Home() {
             <MinusIcon />
           </Box>
         </Box>
-        <Center className={styles.divider}>
-          <Divider
-            orientation="vertical"
-            size="large"
-          />
-        </Center>
-        <Box className={styles.column}>
+        <Box className={styles.column} backgroundColor={away.color}>
           <Box className={`${styles.teamWrapper} ${styles.teamRight}`}>
             <Box
               className={styles.teamSet}
               onClick={() => handleAddPoint("away")}
-              backgroundColor={away.color}
             >
               {away.point}
             </Box>
