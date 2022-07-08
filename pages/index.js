@@ -1,5 +1,5 @@
 import styles from '../styles/Home.module.css'
-import { Box, Heading } from '@chakra-ui/react'
+import { Box, Heading, Center, Divider } from '@chakra-ui/react'
 import { SettingsIcon, MinusIcon, HamburgerIcon } from '@chakra-ui/icons'
 import useActions from "../hooks/home";
 import Settings from '../components/Settings';
@@ -42,12 +42,16 @@ export default function Home() {
         </Box>
       </Box>
       <Box className={styles.main}>
-        <Box className={styles.column} backgroundColor={home.color}>
+        <Box className={styles.column}>
           <Box className={`${styles.teamWrapper} ${styles.teamLeft}`}>
             <Box className={styles.teamName}>
               {home.name}
             </Box>
-            <Box className={styles.teamSet} onClick={() => handleAddPoint("home")}>
+            <Box
+              className={styles.teamSet}
+              onClick={() => handleAddPoint("home")}
+              backgroundColor={home.color}
+            >
               {home.point}
             </Box>
           </Box>
@@ -62,9 +66,19 @@ export default function Home() {
             <MinusIcon />
           </Box>
         </Box>
-        <Box className={styles.column} backgroundColor={away.color}>
+        <Center className={styles.divider}>
+          <Divider
+            orientation="vertical"
+            size="large"
+          />
+        </Center>
+        <Box className={styles.column}>
           <Box className={`${styles.teamWrapper} ${styles.teamRight}`}>
-            <Box className={styles.teamSet} onClick={() => handleAddPoint("away")}>
+            <Box
+              className={styles.teamSet}
+              onClick={() => handleAddPoint("away")}
+              backgroundColor={away.color}
+            >
               {away.point}
             </Box>
             <Box className={`${styles.teamName}`}>

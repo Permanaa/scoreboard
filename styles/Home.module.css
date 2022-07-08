@@ -93,6 +93,8 @@
 
 .main {
   display: flex;
+  /* background-color: #285eba; */
+  background-image: linear-gradient(170deg, #2a61ba, #1e4789);
 }
 
 .column {
@@ -103,6 +105,11 @@
   height: 100vh;
   font-size: 450px;
   color: white;
+}
+
+.divider {
+ height: 750px;
+ margin-top: 200px;
 }
 
 .minus {
