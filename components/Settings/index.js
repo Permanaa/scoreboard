@@ -16,14 +16,14 @@ import { useEffect, useState } from "react"
 
 const Settings = (props) => {
   const { isOpen, onClose, onSave, home, away } = props
-
+  
   const [tempHome, setTempHome] = useState({})
   const [tempAway, setTempAway] = useState({})
 
   const handleClose = () => {
     onClose()
-    setTempHome(home)
-    setTempAway(away)
+    setTempHome({...home})
+    setTempAway({...away})
   }
 
   const handleSave = () => {
@@ -32,8 +32,9 @@ const Settings = (props) => {
   }
 
   useEffect(() => {
-    setTempHome(home);
-    setTempAway(away);
+    setTempHome({...home});
+    setTempAway({...away});
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (

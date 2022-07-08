@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useDisclosure } from '@chakra-ui/react'
 
 const useActions = () => {
@@ -28,6 +28,45 @@ const useActions = () => {
     onOpen: onOpenControl,
     onClose: onCloseControl,
   } = useDisclosure()
+
+  const handleKeyPress = useCallback((event) => {
+    switch (event.key) {
+      case "]":
+        handleAdd("away")
+        break
+      case "[":
+        handleMinus("away")
+        break
+      case "w":
+        handleAdd("home")
+        break
+      case "q":
+        handleMinus("home")
+        break
+      case "=":
+        handleAddPoint("away")
+        break
+      case "-":
+        handleMinusPoint("away")
+        break
+      case "2":
+        handleAddPoint("home")
+        break
+      case "1":
+        handleMinusPoint("home")
+        break
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!isOpenControl && !isOpenSettings) {
+      document.addEventListener('keydown', handleKeyPress);
+
+      return () => {
+        document.removeEventListener('keydown', handleKeyPress);
+      };
+    }
+  }, [handleKeyPress, isOpenControl, isOpenSettings]);
 
   const handleAdd = (team) => {
     if (team === "home") {
