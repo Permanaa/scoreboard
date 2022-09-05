@@ -1,5 +1,9 @@
 # Scoreboard
 
+## Demo
+
+[scoreboard-mu.vercel.app](https://scoreboard-mu.vercel.app)
+
 ## Getting Started
 
 First, run the development server:
