@@ -1,7 +1,7 @@
 import styles from '../styles/Home.module.css'
-import { Box, Heading, Center, Divider } from '@chakra-ui/react'
+import { Box, Container, Heading } from '@chakra-ui/react'
 import { SettingsIcon, MinusIcon, HamburgerIcon } from '@chakra-ui/icons'
-import useActions from "../hooks/home";
+import useActions from "../hooks/useHome";
 import Settings from '../components/Settings';
 import Control from '../components/Control';
 
@@ -37,25 +37,24 @@ export default function Home() {
           <HamburgerIcon fontSize={25} color="white" />
         </Box>
         <Box className={styles.round}>
-          {/* <Box fontSize={80}>SET</Box> */}
-          <Box fontSize={80}>{round}</Box>
+          <Box fontSize={80}>{round || 1}</Box>
         </Box>
       </Box>
       <Box className={styles.main}>
-        <Box className={styles.column} backgroundColor={home.color}>
+        <Box className={styles.column} backgroundColor={home?.color || "#EC3232"}>
           <Box className={`${styles.teamWrapper} ${styles.teamLeft}`}>
             <Box className={styles.teamName}>
-              {home.name}
+              {home?.name  || "Home"}
             </Box>
             <Box
               className={styles.teamSet}
               onClick={() => handleAddPoint("home")}
             >
-              {home.point}
+              {home?.point || 0}
             </Box>
           </Box>
-          <Box onClick={() => handleAdd("home")} cursor="pointer">
-            {home.score}
+          <Box onClick={() => handleAdd("home")} cursor="pointer" className={styles.score}>
+            {home?.score || 0}
           </Box>
           <Box
             className={`${styles.minus} ${styles.minusLeft}`}
@@ -65,20 +64,20 @@ export default function Home() {
             <MinusIcon />
           </Box>
         </Box>
-        <Box className={styles.column} backgroundColor={away.color}>
+        <Box className={styles.column} backgroundColor={away?.color || "#0081C2"}>
           <Box className={`${styles.teamWrapper} ${styles.teamRight}`}>
             <Box
               className={styles.teamSet}
               onClick={() => handleAddPoint("away")}
             >
-              {away.point}
+              {away?.point || 0}
             </Box>
             <Box className={`${styles.teamName}`}>
-              {away.name}
+              {away?.name || "Away"}
             </Box>
           </Box>
-          <Box onClick={() => handleAdd("away")} cursor="pointer">
-            {away.score}
+          <Box onClick={() => handleAdd("away")} cursor="pointer" className={styles.score}>
+            {away?.score || 0}
           </Box>
           <Box
             className={`${styles.minus} ${styles.minusRight}`}
@@ -89,13 +88,15 @@ export default function Home() {
           </Box>
         </Box>
       </Box>
-      <Settings
-        isOpen={isOpenSettings}
-        onClose={onCloseSettings}
-        onSave={handleSave}
-        home={home}
-        away={away}
-      />
+      {(!!home && !!away) && (
+        <Settings
+          isOpen={isOpenSettings}
+          onClose={onCloseSettings}
+          onSave={handleSave}
+          home={home}
+          away={away}
+        />
+      )}
       <Control
         isOpen={isOpenControl}
         onClose={onCloseControl}

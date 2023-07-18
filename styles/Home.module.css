@@ -1,6 +1,9 @@
 .root {
   user-select: none;
   font-family: "Do Hyeon", sans-serif;
+  height: 100vh;
+  width: 100vw;
+  overflow-y: hidden;
 }
 
 .header {
@@ -50,29 +53,26 @@
   border-bottom-left-radius: 12px;
   display: flex;
   flex-direction: column;
-  /* padding-bottom: 35px; */
 }
 
 .teamWrapper {
-  position: absolute;
-  top: 200px;
   font-size: 70px;
   display: flex;
   gap: 8px;
+  width: 100%;
 }
 
 .teamName {
   color: black;
   background-color: white;
   display: flex;
-  /* height: 120px; */
   padding-left: 30px;
   padding-right: 30px;
   justify-content: center;
   align-items: center;
   gap: 16px;
   font-size: 80px;
-  width: 550px;
+  width: 75%;
 }
 
 .teamSet {
@@ -88,26 +88,29 @@
 
 .teamLeft {
   left: 0;
+  justify-content: flex-start;
 }
 
 .teamRight {
-  right: 0
+  right: 0;
+  justify-content: flex-end;
 }
 
 .main {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   background-image: linear-gradient(170deg, #2a61ba, #1e4789);
+  width: 100vw;
 }
 
 .column {
-  flex: 50%;
   display: flex;
   justify-content: center;
-  align-items: center;
+  flex-direction: column;
   height: 100vh;
   font-size: 450px;
   color: white;
-  padding-top: 300px;
+  padding-top: 128px;
 }
 
 .divider {
@@ -137,4 +140,10 @@
   position: absolute;
   bottom: 0;
   right: 0;
+}
+
+.score {
+  display: flex;
+  justify-content: center;
+  line-height: 1.15;
 }

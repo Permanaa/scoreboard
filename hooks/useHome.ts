@@ -1,21 +1,30 @@
-import { useState, useEffect, useCallback } from "react";
+import { useEffect, useCallback } from "react";
 import { useDisclosure } from '@chakra-ui/react'
+import { useLocalStorageState } from "./useLocalStorage";
+
+export interface ITeam {
+  score: number;
+  point: number;
+  name: string;
+  color: string;
+}
 
 const useActions = () => {
-  const [home, setHome] = useState({
+  const [home, setHome] = useLocalStorageState<ITeam>('home', {
     score: 0,
     point: 0,
     name: "Home",
-    color: "#fc6c6c"
-  });
-  const [away, setAway] = useState({
+    color: "#EC3232"
+  })
+
+  const [away, setAway] = useLocalStorageState<ITeam>('away', {
     score: 0,
     point: 0,
     name: "Away",
-    color: "#42c0ff"
-  });
-  
-  const [round, setRound] = useState(1);
+    color: "#0081C2"
+  })
+
+  const [round, setRound] = useLocalStorageState<number>('round', 1)
 
   const {
     isOpen: isOpenSettings,
@@ -29,78 +38,39 @@ const useActions = () => {
     onClose: onCloseControl,
   } = useDisclosure()
 
-  const handleKeyPress = useCallback((event) => {
-    switch (event.key) {
-      case "]":
-        handleAdd("away")
-        break
-      case "[":
-        handleMinus("away")
-        break
-      case "w":
-        handleAdd("home")
-        break
-      case "q":
-        handleMinus("home")
-        break
-      case "=":
-        handleAddPoint("away")
-        break
-      case "-":
-        handleMinusPoint("away")
-        break
-      case "2":
-        handleAddPoint("home")
-        break
-      case "1":
-        handleMinusPoint("home")
-        break
-    }
-  }, []);
-
-  useEffect(() => {
-    if (!isOpenControl && !isOpenSettings) {
-      document.addEventListener('keydown', handleKeyPress);
-
-      return () => {
-        document.removeEventListener('keydown', handleKeyPress);
-      };
-    }
-  }, [handleKeyPress, isOpenControl, isOpenSettings]);
-
-  const handleAdd = (team) => {
+  const handleAdd = useCallback((team: string) => {
     if (team === "home") {
       setHome(prev => ({...prev, score: prev.score + 1}));
     } else {
       setAway(prev => ({...prev, score: prev.score + 1}));
     }
-  }
+  }, [setAway, setHome])
 
-  const handleMinus = (team) => {
+  const handleMinus = useCallback((team: string) => {
     if (team === "home") {
       setHome(prev => ({...prev, score: prev.score - 1}));
     } else {
       setAway(prev => ({...prev, score: prev.score - 1}));
     }
-  }
+  }, [setAway, setHome])
 
-  const handleAddPoint = (team) => {
+  const handleAddPoint = useCallback((team: string) => {
     if (team === "home") {
       setHome(prev => ({...prev, point: prev.point + 1}));
     } else {
       setAway(prev => ({...prev, point: prev.point + 1}));
     }
-  }
+  }, [setAway, setHome])
 
-  const handleMinusPoint = (team) => {
+  const handleMinusPoint = useCallback((team: string) => {
     if (team === "home") {
       setHome(prev => ({...prev, point: prev.point - 1}));
     } else {
       setAway(prev => ({...prev, point: prev.point - 1}));
     }
-  }
+  }, [setAway, setHome])
 
-  const handleSave = (data) => {
+  const handleSave = (data: { home: ITeam, away: ITeam }) => {
     setHome(data.home)
     setAway(data.away)
   }
@@ -130,6 +100,45 @@ const useActions = () => {
     }))
     setRound(prev => prev + 1)
   }
+
+  const handleKeyPress = useCallback((event: KeyboardEvent) => {
+    switch (event.key) {
+      case "]":
+        handleAdd("away")
+        break
+      case "[":
+        handleMinus("away")
+        break
+      case "w":
+        handleAdd("home")
+        break
+      case "q":
+        handleMinus("home")
+        break
+      case "=":
+        handleAddPoint("away")
+        break
+      case "-":
+        handleMinusPoint("away")
+        break
+      case "2":
+        handleAddPoint("home")
+        break
+      case "1":
+        handleMinusPoint("home")
+        break
+    }
+  }, [handleAdd, handleAddPoint, handleMinus, handleMinusPoint]);
+
+  useEffect(() => {
+    if (!isOpenControl && !isOpenSettings) {
+      document.addEventListener('keydown', handleKeyPress);
+
+      return () => {
+        document.removeEventListener('keydown', handleKeyPress);
+      };
+    }
+  }, [handleKeyPress, isOpenControl, isOpenSettings]);
 
   return {
     home, setHome,

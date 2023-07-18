@@ -10,9 +10,17 @@ import {
 import { ArrowRightIcon, RepeatClockIcon } from "@chakra-ui/icons"
 import styles from "./control.module.css"
 
-const Control = (props) => {
-  const { isOpen, onClose, onReset, onNextRound } = props
-
+const Control = ({
+  isOpen,
+  onClose,
+  onReset,
+  onNextRound,
+}: {
+  isOpen: boolean;
+  onClose: () => void;
+  onReset: () => void;
+  onNextRound: () => void;
+}) => {
   const handleonNextRound = () => {
     onNextRound()
     onClose()
