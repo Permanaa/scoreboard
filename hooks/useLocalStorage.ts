@@ -30,24 +30,18 @@ export const useLocalStorageState = <T>(
   return [state as T, setValue]
 }
 
-export const useLocalStorage = <T>(key: string) => {
-  const get = () => {
-    if (typeof window !== 'undefined') {
-      const localState = window.localStorage.getItem(key)
-      return localState as T;
-    }
+export const useLocalStorage = () => {
+  const get = <T>(key: string): T => {
+    const value = window.localStorage.getItem(key)
+    return value ? JSON.parse(value) : null
   }
 
-  const set = (value: T) => {
-    if (typeof window !== 'undefined') {
-      window.localStorage.setItem(key, JSON.stringify(value))
-    }
+  const set = <T>(key: string, value: T) => {
+    window.localStorage.setItem(key, JSON.stringify(value))
   }
 
-  const remove = () => {
-    if (typeof window !== 'undefined') {
-      window.localStorage.removeItem(key)
-    }
+  const remove = (key: string) => {
+    window.localStorage.removeItem(key)
   }
 
   return {

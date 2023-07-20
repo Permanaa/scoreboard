@@ -24,6 +24,10 @@ const useActions = () => {
     color: "#0081C2"
   })
 
+  const [homeHistory, setHomeHistory] = useLocalStorageState<ITeam[]>('home-history', [])
+
+  const [awayHistory, setAwayHistory] = useLocalStorageState<ITeam[]>('away-history', [])
+
   const [round, setRound] = useLocalStorageState<number>('round', 1)
 
   const {
@@ -87,9 +91,13 @@ const useActions = () => {
       point: 0
     }))
     setRound(1)
+    setHomeHistory([])
+    setAwayHistory([])
   }
 
   const handleNextRound = () => {
+    setHomeHistory(prev => ([...prev, home]))
+    setAwayHistory(prev => ([...prev, away]))
     setHome(prev => ({
       ...prev,
       score: 0,
@@ -141,6 +149,8 @@ const useActions = () => {
   }, [handleKeyPress, isOpenControl, isOpenSettings]);
 
   return {
+    homeHistory,
+    awayHistory,
     home, setHome,
     away, setAway,
     round, setRound,
