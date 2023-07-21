@@ -53,6 +53,7 @@
   border-bottom-left-radius: 12px;
   display: flex;
   flex-direction: column;
+  height: 80px;
 }
 
 .teamWrapper {
@@ -60,6 +61,8 @@
   display: flex;
   gap: 8px;
   width: 100%;
+  margin-top: 128px;
+  height: 96px;
 }
 
 .teamName {
@@ -77,8 +80,8 @@
 
 .teamSet {
   background-color: #00000080;
-  width: 120px;
-  height: 120px;
+  width: 128px;
+  height: 96px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -107,10 +110,9 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  height: 100vh;
   font-size: 450px;
   color: white;
-  padding-top: 128px;
+  height: 100vh;
 }
 
 .divider {
@@ -145,5 +147,5 @@
 .score {
   display: flex;
   justify-content: center;
-  line-height: 1.15;
+  line-height: 1;
 }
