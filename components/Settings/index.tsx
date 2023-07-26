@@ -90,7 +90,7 @@ const Settings = ({
   }
 
   return (
-    <Modal isOpen={isOpen} onClose={handleClose} size="6xl">
+    <Modal isOpen={isOpen} onClose={handleClose} size="5xl">
       <ModalOverlay />
       <ModalContent>
         <ModalHeader>Pengaturan</ModalHeader>
