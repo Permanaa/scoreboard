@@ -108,6 +108,7 @@ const Settings = ({
                   <Input
                     type="color"
                     width="80px"
+                    cursor="pointer"
                     value={tempHome?.color}
                     onChange={(e) => setTempHome(prev => ({ ...prev, color: e.target.value }))}
                   />
@@ -170,6 +171,7 @@ const Settings = ({
                   <Input
                     type="color"
                     width="80px"
+                    cursor="pointer"
                     value={tempAway?.color}
                     onChange={(e) => setTempAway(prev => ({ ...prev, color: e.target.value }))}
                   />
