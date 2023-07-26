@@ -7,6 +7,8 @@ export interface ITeam {
   point: number;
   name: string;
   color: string;
+  logo: string;
+  logoSize: number;
 }
 
 const useActions = () => {
@@ -14,14 +16,18 @@ const useActions = () => {
     score: 0,
     point: 0,
     name: "Home",
-    color: "#EC3232"
+    color: "#EC3232",
+    logo: "",
+    logoSize: 200,
   })
 
   const [away, setAway] = useLocalStorageState<ITeam>('away', {
     score: 0,
     point: 0,
     name: "Away",
-    color: "#0081C2"
+    color: "#0081C2",
+    logo: "",
+    logoSize: 200,
   })
 
   const [homeHistory, setHomeHistory] = useLocalStorageState<ITeam[]>('home-history', [])

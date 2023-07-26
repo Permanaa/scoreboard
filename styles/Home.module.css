@@ -61,7 +61,6 @@
   display: flex;
   gap: 8px;
   width: 100%;
-  margin-top: 128px;
   height: 96px;
 }
 
@@ -110,7 +109,6 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  font-size: 450px;
   color: white;
   height: 100vh;
 }
@@ -148,4 +146,5 @@
   display: flex;
   justify-content: center;
   line-height: 1;
+  font-size: 550px;
 }
