@@ -52,6 +52,7 @@ export default function Textboard () {
         fontSize={256}
         fontWeight={700}
         letterSpacing="16px"
+        lineHeight={1}
       >
         <EditablePreview />
         <EditableInput
