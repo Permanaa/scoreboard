@@ -75,6 +75,7 @@
   gap: 16px;
   font-size: 80px;
   width: 75%;
+  white-space: nowrap;
 }
 
 .teamSet {

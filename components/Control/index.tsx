@@ -7,11 +7,17 @@ import {
   ModalContent,
   Box,
 } from "@chakra-ui/react"
-import { ArrowRightIcon, RepeatClockIcon, DownloadIcon } from "@chakra-ui/icons"
+import {
+  ArrowRightIcon,
+  RepeatClockIcon,
+  DownloadIcon,
+  ChatIcon
+} from "@chakra-ui/icons"
 import styles from "./control.module.css"
 import { useLocalStorage } from "../../hooks/useLocalStorage"
 import { ITeam } from "../../hooks/useHome"
 import { writeFileXLSX, utils } from "xlsx"
+import Link from "next/link"
 
 const Control = ({
   isOpen,
@@ -113,6 +119,12 @@ const Control = ({
               <DownloadIcon fontSize={20} />
               Export ke XLSX
             </Box>
+            <Link href="/textboard">
+              <Box className={styles.button}>
+                <ChatIcon fontSize={20} />
+                Papan Teks
+              </Box>
+            </Link>
           </Box>
         </ModalBody>
       </ModalContent>
