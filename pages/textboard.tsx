@@ -15,7 +15,7 @@ import { Do_Hyeon } from 'next/font/google'
 const doHyun = Do_Hyeon({ weight: "400", subsets: ["latin"] })
 
 export default function Textboard () {
-  const [content, setContent] = useLocalStorageState<string>("textboard", "00000")
+  const [content, setContent] = useLocalStorageState<string>("textboard", "000000")
 
   return (
     <Box
