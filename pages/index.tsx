@@ -23,6 +23,7 @@ export default function Home() {
     handleReset,
     round,
     handleNextRound,
+    handleFlip,
   } = useActions();
 
   return (
@@ -145,6 +146,7 @@ export default function Home() {
         onClose={onCloseControl}
         onReset={handleReset}
         onNextRound={handleNextRound}
+        onFlip={handleFlip}
       />
     </Box>
   )

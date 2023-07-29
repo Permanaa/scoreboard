@@ -11,7 +11,8 @@ import {
   ArrowRightIcon,
   RepeatClockIcon,
   DownloadIcon,
-  ChatIcon
+  ChatIcon,
+  RepeatIcon
 } from "@chakra-ui/icons"
 import styles from "./control.module.css"
 import { useLocalStorage } from "../../hooks/useLocalStorage"
@@ -24,11 +25,13 @@ const Control = ({
   onClose,
   onReset,
   onNextRound,
+  onFlip,
 }: {
   isOpen: boolean;
   onClose: () => void;
   onReset: () => void;
   onNextRound: () => void;
+  onFlip: () => void;
 }) => {
   const { get } = useLocalStorage()
 
@@ -39,6 +42,11 @@ const Control = ({
 
   const handleReset = () => {
     onReset()
+    onClose()
+  }
+
+  const handleFlip = () => {
+    onFlip()
     onClose()
   }
 
@@ -114,6 +122,10 @@ const Control = ({
             <Box className={styles.button} onClick={handleReset}>
               <RepeatClockIcon fontSize={20} />
               Atur Ulang
+            </Box>
+            <Box className={styles.button} onClick={handleFlip}>
+              <RepeatIcon fontSize={22} />
+              Pindah Posisi
             </Box>
             <Box className={styles.button} onClick={handleExport}>
               <DownloadIcon fontSize={20} />

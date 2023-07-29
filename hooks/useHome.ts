@@ -102,8 +102,18 @@ const useActions = () => {
   }
 
   const handleNextRound = () => {
-    setHomeHistory(prev => ([...prev, home]))
-    setAwayHistory(prev => ([...prev, away]))
+    const historyHome = {
+      ...home,
+      logo: "",
+    }
+    const historyAway = {
+      ...away,
+      logo: "",
+    }
+
+    setHomeHistory(prev => ([...prev, historyHome]))
+    setAwayHistory(prev => ([...prev, historyAway]))
+
     setHome(prev => ({
       ...prev,
       score: 0,
@@ -112,6 +122,7 @@ const useActions = () => {
       ...prev,
       score: 0,
     }))
+
     setRound(prev => prev + 1)
   }
 
@@ -154,6 +165,19 @@ const useActions = () => {
     }
   }, [handleKeyPress, isOpenControl, isOpenSettings]);
 
+
+  const handleFlip = () => {
+    const homeTemp = home
+    const awayTemp = away
+    const homeHistoryTemp = homeHistory
+    const awayHistoryTemp = awayHistory
+
+    setHome(awayTemp)
+    setAway(homeTemp)
+    setHomeHistory(awayHistoryTemp)
+    setAwayHistory(homeHistoryTemp)
+  }
+
   return {
     homeHistory,
     awayHistory,
@@ -173,6 +197,7 @@ const useActions = () => {
     onCloseControl,
     handleReset,
     handleNextRound,
+    handleFlip,
   }
 }
 
