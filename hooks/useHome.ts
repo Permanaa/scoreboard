@@ -140,6 +140,12 @@ const useActions = () => {
       case "q":
         handleMinus("home")
         break
+      case "W":
+        handleAdd("home")
+        break
+      case "Q":
+        handleMinus("home")
+        break
       case "=":
         handleAddPoint("away")
         break
