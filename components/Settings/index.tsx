@@ -18,7 +18,7 @@ import {
   NumberIncrementStepper,
   NumberDecrementStepper,
 } from "@chakra-ui/react"
-import { ChangeEvent, useState, useRef } from "react"
+import { ChangeEvent, useState, useRef, useEffect } from "react"
 import { ITeam } from "../../hooks/useHome";
 import Image from "next/image";
 
@@ -53,6 +53,11 @@ const Settings = ({
 
   const [tempHome, setTempHome] = useState<ITeam>(home)
   const [tempAway, setTempAway] = useState<ITeam>(away)
+
+  useEffect(() => {
+    setTempHome(home)
+    setTempAway(away)
+  }, [home, away])
 
   const handleClose = () => {
     onClose()
