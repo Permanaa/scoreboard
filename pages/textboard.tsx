@@ -67,7 +67,6 @@ export default function Textboard () {
       </Box>
       <Box display="flex" flexDirection="column">
         {!!content && content.map((item, index) => {
-          console.log(item)
           return (
             <Box key={index} display="flex" alignItems="center">
               <Editable
